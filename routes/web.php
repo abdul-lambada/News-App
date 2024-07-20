@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/category/{category}', [HomeController::class, 'category'])->name('category');
+Route::get('/region/{region}', [HomeController::class, 'region'])->name('region');
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('dashboard');
