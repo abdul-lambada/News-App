@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News Talenthub</title>
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
 <body class="bg-gray-100 flex flex-col min-h-screen">
     <!-- Header -->
@@ -19,23 +19,8 @@
             </main>
 
             <!-- Sidebar -->
-            <aside class="col-span-3 bg-gray-800 text-white p-4 h-full">
-                <h2 class="text-xl font-bold mb-4">Popular News</h2>
-                <ul>
-                    @foreach ($popularNews as $news)
-                        <li class="mb-2">
-                            <a href="#" class="text-blue-400 hover:text-blue-600">{{ $news['title'] }}</a>
-                        </li>
-                    @endforeach
-                </ul>
-                <h2 class="text-xl font-bold mt-6 mb-4">Categories</h2>
-                <ul>
-                    @foreach ($categories as $category)
-                        <li class="mb-2">
-                            <a href="#" class="text-white hover:text-gray-400">{{ $category }}</a>
-                        </li>
-                    @endforeach
-                </ul>
+            <aside class="col-span-3 bg-gray-800 bg-opacity-85 text-white p-4 h-full rounded-lg transparent-sidebar">
+                @include('partials.user.sidebar', ['popularNews' => $popularNews, 'categories' => $categories])
             </aside>
         </div>
 
@@ -47,23 +32,8 @@
             </main>
 
             <!-- Sidebar -->
-            <aside class="bg-gray-800 text-white p-4 h-full">
-                <h2 class="text-xl font-bold mb-4">Popular News</h2>
-                <ul>
-                    @foreach ($popularNews as $news)
-                        <li class="mb-2">
-                            <a href="#" class="text-blue-400 hover:text-blue-600">{{ $news['title'] }}</a>
-                        </li>
-                    @endforeach
-                </ul>
-                <h2 class="text-xl font-bold mt-6 mb-4">Categories</h2>
-                <ul>
-                    @foreach ($categories as $category)
-                        <li class="mb-2">
-                            <a href="#" class="text-white hover:text-gray-400">{{ $category }}</a>
-                        </li>
-                    @endforeach
-                </ul>
+            <aside class="bg-gray-800 bg-opacity-85 text-white p-4 h-full rounded-lg transparent-sidebar">
+                @include('partials.user.sidebar', ['popularNews' => $popularNews, 'categories' => $categories])
             </aside>
         </div>
     </div>
