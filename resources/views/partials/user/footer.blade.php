@@ -1,15 +1,17 @@
-<footer class="bg-white rounded-lg shadow dark:bg-gray-900 m-4">
-    <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
-        <div class="sm:flex sm:items-center sm:justify-between">
-            <a href="https://flowbite.com/" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
-                <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
-                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
-            </a>
-            <ul class="flex flex-wrap items-center justify-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400 space-y-2 sm:space-y-0">
-                <li class="mr-4 md:mr-6">
+<footer class="rounded-lg shadow m-2">
+    <div class="w-full max-w-screen-xl mx-auto p-2 md:py-4">
+        <div class="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0 md:space-x-2 rtl:space-x-reverse">
+            <div class="flex items-center space-x-2 rtl:space-x-reverse">
+                <a href="https://flowbite.com/" class="flex items-center space-x-2 rtl:space-x-reverse">
+                    <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
+                    <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">News Talenthub</span>
+                </a>
+            </div>
+            <ul class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-2 md:space-x-4 rtl:space-x-reverse text-xs font-medium text-gray-500 dark:text-gray-400">
+                <li>
                     <a href="#" class="hover:underline">About</a>
                 </li>
-                <li class="mr-4 md:mr-6">
+                <li>
                     <a href="#" class="hover:underline">Privacy Policy</a>
                 </li>
                 <li>
@@ -17,7 +19,7 @@
                 </li>
             </ul>
         </div>
-        <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-        <span class="block text-sm text-gray-500 text-center dark:text-gray-400 mt-4">© 2024 <a href="#" class="hover:underline">News Talenthub</a>. All Rights Reserved.</span>
+        <hr class="my-4 border-gray-200 dark:border-gray-700" />
+        <span class="block text-xs text-gray-500 text-center dark:text-gray-400">© 2024 <a href="#" class="hover:underline">News Talenthub</a>. All Rights Reserved.</span>
     </div>
 </footer>
