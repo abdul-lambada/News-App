@@ -1,4 +1,4 @@
-<footer class="rounded-lg shadow m-2">
+<footer class="w-full shadow m-2 mt-auto">
     <div class="w-full max-w-screen-xl mx-auto p-2 md:py-4">
         <div class="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0 md:space-x-2 rtl:space-x-reverse">
             <div class="flex items-center space-x-2 rtl:space-x-reverse">
