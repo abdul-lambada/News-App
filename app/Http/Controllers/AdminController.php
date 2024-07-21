@@ -24,6 +24,11 @@ class AdminController extends Controller
         return view('admin.categories');
     }
 
+    public function manageUsers()
+    {
+        return view('admin.users');
+    }
+
     public function settings()
     {
         // Logic untuk mengambil data pengaturan
