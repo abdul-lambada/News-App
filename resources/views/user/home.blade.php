@@ -44,7 +44,7 @@
         <h1 class="text-2xl font-bold mb-4">News List</h1>
         <div id="news-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach ($paginatedNews as $newsItem)
-                <a href="#" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 transition-transform transform hover:scale-105">
+                <a href="{{ route('news.detail', $newsItem['id']) }}" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 transition-transform transform hover:scale-105">
                     <img class="object-cover w-full h-40 rounded-t-lg" src="{{ $newsItem['image_url'] }}" alt="{{ $newsItem['title'] }}">
                     <div class="flex flex-col justify-between p-4 leading-normal text-center">
                         <p class="text-sm text-gray-600 dark:text-gray-400 mb-1">{{ \Carbon\Carbon::parse($newsItem['date'])->format('F j, Y') }} - {{ $newsItem['category'] }}</p>
@@ -65,10 +65,10 @@
                 <button class="inline-block p-4 border-b-2 rounded-t-lg" id="editor-choice-tab" data-tabs-target="#editor-choice" type="button" role="tab" aria-controls="editor-choice" aria-selected="true">Feature</button>
             </li>
             <li class="me-2" role="presentation">
-                <button class="inline-block p-4 border-b-2 rounded-t-lg" id="komunitas-tab" data-tabs-target="#komunitas" type="button" role="tab" aria-controls="komunitas" aria-selected="false">komunitas</button>
+                <button class="inline-block p-4 border-b-2 rounded-t-lg" id="komunitas-tab" data-tabs-target="#komunitas" type="button" role="tab" aria-controls="komunitas" aria-selected="false">Komunitas</button>
             </li>
             <li class="me-2" role="presentation">
-                <button class="inline-block p-4 border-b-2 rounded-t-lg" id="opini-tab" data-tabs-target="#opini" type="button" role="tab" aria-controls="opini" aria-selected="false">opini</button>
+                <button class="inline-block p-4 border-b-2 rounded-t-lg" id="opini-tab" data-tabs-target="#opini" type="button" role="tab" aria-controls="opini" aria-selected="false">Opini</button>
             </li>
         </ul>
     </div>
@@ -82,13 +82,13 @@
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 @foreach ($editorChoiceNews as $newsItem)
-                    <div class="flex items-center space-x-4">
+                    <a href="{{ route('news.detail', $newsItem['id']) }}" class="flex items-center space-x-4">
                         <img src="{{ $newsItem['image_url'] }}" alt="{{ $newsItem['title'] }}" class="w-16 h-16 rounded-lg">
                         <div>
                             <h3 class="text-md font-semibold">{{ $newsItem['title'] }}</h3>
                             <p class="text-sm text-gray-500 dark:text-gray-400">{{ \Carbon\Carbon::parse($newsItem['date'])->format('F j, Y') }}</p>
                         </div>
-                    </div>
+                    </a>
                 @endforeach
             </div>
         </div>
@@ -101,13 +101,13 @@
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 @foreach ($komunitasNews as $newsItem)
-                    <div class="flex items-center space-x-4">
+                    <a href="{{ route('news.detail', $newsItem['id']) }}" class="flex items-center space-x-4">
                         <img src="{{ $newsItem['image_url'] }}" alt="{{ $newsItem['title'] }}" class="w-16 h-16 rounded-lg">
                         <div>
                             <h3 class="text-md font-semibold">{{ $newsItem['title'] }}</h3>
                             <p class="text-sm text-gray-500 dark:text-gray-400">{{ \Carbon\Carbon::parse($newsItem['date'])->format('F j, Y') }}</p>
                         </div>
-                    </div>
+                    </a>
                 @endforeach
             </div>
         </div>
@@ -120,13 +120,13 @@
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 @foreach ($opiniNews as $newsItem)
-                    <div class="flex items-center space-x-4">
+                    <a href="{{ route('news.detail', $newsItem['id']) }}" class="flex items-center space-x-4">
                         <img src="{{ $newsItem['image_url'] }}" alt="{{ $newsItem['title'] }}" class="w-16 h-16 rounded-lg">
                         <div>
                             <h3 class="text-md font-semibold">{{ $newsItem['title'] }}</h3>
                             <p class="text-sm text-gray-500 dark:text-gray-400">{{ \Carbon\Carbon::parse($newsItem['date'])->format('F j, Y') }}</p>
                         </div>
-                    </div>
+                    </a>
                 @endforeach
             </div>
         </div>
