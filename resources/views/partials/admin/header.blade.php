@@ -1,23 +1,40 @@
-<header class="bg-white shadow p-4 flex justify-between items-center">
-    <div class="container mx-auto flex justify-between items-center">
-        <button @click="sidebarOpen = !sidebarOpen" class="lg:hidden text-gray-600 hover:text-gray-800 focus:outline-none">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-            </svg>
-        </button>
-        <div class="text-lg font-bold">News Talenthub</div>
-        <div class="hidden lg:flex items-center">
-            <span class="text-gray-700 mr-4">Tom Cook</span>
-            <div class="relative" x-data="{ open: false }">
-                <button @click="open = !open" class="flex items-center text-gray-600 hover:text-gray-800 focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+<header class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+    <div class="px-3 py-3 lg:px-5 lg:pl-3">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center justify-start rtl:justify-end">
+                <button @click="sidebarOpen = !sidebarOpen" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+                    <span class="sr-only">Open sidebar</span>
+                    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
                     </svg>
                 </button>
-                <div class="absolute right-0 w-48 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg" x-show="open" @click.away="open = false" x-cloak>
-                    <div class="py-1">
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700">Profile</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700">Logout</a>
+                <a href="{{ route('admin.dashboard') }}" class="flex ms-2 md:me-24">
+                    <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 me-3" alt="FlowBite Logo" />
+                    <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">News Talenthub</span>
+                </a>
+            </div>
+            <div class="flex items-center">
+                <div class="relative flex items-center ms-3" x-data="{ open: false }">
+                    <div>
+                        <button @click="open = !open" type="button" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false">
+                            <span class="sr-only">Open user menu</span>
+                            <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">
+                        </button>
+                    </div>
+                    <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 dark:bg-gray-700 dark:divide-gray-600" style="display: none; top: calc(100% + 0.5rem);">
+                        <div class="px-4 py-3 border-b border-gray-200 dark:border-gray-600">
+                            <p class="text-sm font-semibold text-gray-900 dark:text-white">Tom Cook</p>
+                        </div>
+                        <ul class="py-1">
+                            <li>
+                                <a href="{{ route('logout') }}" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <svg class="w-5 h-5 mr-3 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1m0-10V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2h6a2 2 0 002-2v-1" />
+                                    </svg>
+                                    Sign out
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
