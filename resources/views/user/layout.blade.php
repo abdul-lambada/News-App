@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News Talenthub</title>
-    <link rel="icon" href="https://flowbite.com/docs/images/logo.svg" type="image/svg+xml">
+    <title>Breaking News</title>
+    <link rel="icon" href="/img/logo_news.png" type="image/svg+xml">
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
-<body class="bg-gray-100 flex flex-col min-h-screen">
+<body class="bg-cyan-100 flex flex-col min-h-screen">
     <!-- Header -->
     @include('partials.user.header', ['categories' => $categories])
 
@@ -20,7 +20,7 @@
             </main>
 
             <!-- Sidebar -->
-            <aside class="col-span-3 bg-gray-800 bg-opacity-85 text-white p-4 h-full rounded-lg transparent-sidebar">
+            <aside class="col-span-3 bg-cyan-700 bg-opacity-85 text-white p-4 h-full rounded-lg transparent-sidebar">
                 @include('partials.user.sidebar', ['popularNews' => $popularNews, 'categories' => $categories])
             </aside>
         </div>
@@ -33,7 +33,7 @@
             </main>
 
             <!-- Sidebar -->
-            <aside class="bg-gray-800 bg-opacity-85 text-white p-4 h-full rounded-lg transparent-sidebar">
+            <aside class="bg-cyan-700 bg-opacity-85 text-white p-4 h-full rounded-lg transparent-sidebar">
                 @include('partials.user.sidebar', ['popularNews' => $popularNews, 'categories' => $categories])
             </aside>
         </div>
