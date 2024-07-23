@@ -3,7 +3,7 @@
 <ul>
     @foreach ($popularNews as $news)
         <li class="mb-2">
-            <a href="#" class="text-blue-400 hover:text-blue-600">{{ $news['title'] }}</a>
+            <a href="#" class="text-gray-900 hover:text-white">{{ $news['title'] }}</a>
         </li>
     @endforeach
 </ul>
@@ -11,7 +11,7 @@
 <ul>
     @foreach ($categories as $category)
         <li class="mb-2">
-            <a href="#" class="text-white hover:text-gray-400">{{ $category }}</a>
+            <a href="#" class="text-white hover:text-gray-900">{{ $category }}</a>
         </li>
     @endforeach
 </ul>
