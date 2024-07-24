@@ -9,8 +9,12 @@ News App adalah aplikasi web untuk menampilkan berita terkini.
 - Node.js >= 20.xx.x
 - NPM
 - PostgreSQL
+- NPM => 10.2.3
+- PostgresSQL => 14.12
 
 ## Instalasi
+@@ -42,6 +42,18 @@ Salin file .env.example ke .env dan sesuaikan konfigurasi environment Anda:
+cp .env.example .env
 
 ### Clone Repository
 Clone repository ini ke direktori lokal Anda:
@@ -36,9 +40,15 @@ npm install
 ```
 
 ### Konfigurasi Environment
-Salin file .env.example ke .env dan sesuaikan konfigurasi environment Anda:
+Pastikan anda telah membuat ```database``` di postgeresswl. Masuk ke file .env dan sesuaikan konfigurasi database Anda:
 
 ```bash
+DB_CONNECTION=pgsql
+DB_HOST=172.0.0.1
+DB_PORT=5432
+DB_DATABASE=database_name_postgresql
+DB_USERNAME=database_user_postgresql
+DB_PASSWORD=database_password_postgresql
 cp .env.example .env
 ```
 
