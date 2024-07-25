@@ -9,7 +9,8 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Pipeline\Pipeline;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
-use App\Http\Middleware\VerifyCsrfToken; // Add this line
+use App\Http\Middleware\VerifyCsrfToken;
+use App\Http\Middleware\CountNewsView;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -23,6 +24,7 @@ return Application::configure(basePath: dirname(__DIR__))
             TrimStrings::class,
             ConvertEmptyStringsToNull::class,
             VerifyCsrfToken::class,
+            CountNewsView::class,
         ]);
 
         // Middleware for handling API request
