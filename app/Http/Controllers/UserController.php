@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -31,6 +32,10 @@ class UserController extends Controller
             'role_id' => 'required|exists:roles,id',
         ]);
 
+        if ($request->hasFile('profile_photo')) {
+            $validatedData['profile_photo'] = $request->file('profile_photo')->store('profile_picture', 'public');
+        }
+
         $user = User::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
@@ -40,12 +45,7 @@ class UserController extends Controller
             'role_id' => $validatedData['role_id'],
         ]);
 
-        // return redirect()->route('admin.users.index')->with('success', 'User created successfully.');
-        if ($user) {
-            return redirect()->route('admin.users.index')->with('success', 'User created successfully.');
-        } else {
-            return redirect()->route('admin.users.create')->with('error', 'Failed to create user.');
-        }
+        return redirect()->route('admin.users.index')->with('success', 'User created successfully.');
     }
 
     public function edit(User $user)
@@ -56,7 +56,7 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
             'phone_number' => 'nullable|string|max:15',
@@ -64,13 +64,14 @@ class UserController extends Controller
             'role_id' => 'required|exists:roles,id',
         ]);
 
-        $user->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone_number' => $request->phone_number,
-            'address' => $request->address,
-            'role_id' => $request->role_id,
-        ]);
+        if ($request->hasFile('profile_photo')) {
+            if ($user->profile_photo) {
+                Storage::disk('public')->delete($user->profile_photo);
+            }
+            $validatedData['profile_photo'] = $request->file('profile_photo')->store('profile_picture', 'public');
+        }
+
+        $user->update($validatedData);
 
         if ($request->password) {
             $request->validate([
@@ -84,6 +85,10 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
+        if ($user->profile_photo) {
+            Storage::disk('public')->delete($user->profile_photo);
+        }
+        
         $user->delete();
 
         return redirect()->route('admin.users.index')->with('success', 'User deleted successfully.');

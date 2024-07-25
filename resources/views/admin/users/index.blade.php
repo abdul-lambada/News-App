@@ -20,6 +20,13 @@
             <tbody>
                 @foreach($users as $user)
                 <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                    <td class="px-6 py-4">
+                        @if($user->profile_photo)
+                            <img src="{{ Storage::url($user->profile_photo) }}" alt="{{ $user->name }}" class="w-10 h-10 rounded-full">
+                        @else
+                            <img src="path/to/default/photo" alt="default photo" class="w-10 h-10 rounded-full">
+                        @endif
+                    </td>
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {{ $user->name }}
                     </th>
