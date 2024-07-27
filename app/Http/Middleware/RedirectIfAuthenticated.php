@@ -12,12 +12,15 @@ class RedirectIfAuthenticated
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @param  string|null  $guard
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function handle(Request $request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->check()){
-            return redirect('/'); // Or your desired redirect rooute
+        if (Auth::guard($guard)->check()) {
+            return redirect('/'); // Or your desired redirect route
         }
 
         return $next($request);

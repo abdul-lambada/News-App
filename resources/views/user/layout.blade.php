@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Breaking News</title>
-    <link rel="icon" href="/img/logo_news.png" type="image/svg+xml">
+    <link rel="icon" href="images/logo_news.png" type="image/svg+xml">
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
-<body class="bg-cyan-100 flex flex-col min-h-screen">
+<body class="flex flex-col min-h-screen">
     <!-- Header -->
     <div class="container mx-auto py-2">
         @include('partials.user.header', ['categories' => $categories])
     </div>
 
-    <div class="container mx-auto py-4">
+    <div class="container mx-auto py-4 bg-cyan-400">
         <!-- For large screens -->
         <div class="hidden lg:grid grid-cols-12 gap-4">
             <!-- Main Content and Slider -->
@@ -22,7 +22,7 @@
             </main>
 
             <!-- Sidebar -->
-            <aside class="mr-8 col-span-3 bg-cyan-700 bg-opacity-85 text-white p-4 h-full rounded-lg transparent-sidebar">
+            <aside class="col-span-3 bg-cyan-400 bg-opacity-85 divide-y divide-gray-100 text-gray-900 p-4 h-full rounded-lg shadow-lg">
                 @include('partials.user.sidebar', ['popularNews' => $popularNews, 'categories' => $categories])
             </aside>
         </div>
@@ -35,7 +35,7 @@
             </main>
 
             <!-- Sidebar -->
-            <aside class="col-span-3 bg-gray-100 bg-opacity-85 divide-y divide-gray-100 text-gray-900 p-4 h-full rounded-lg shadow-lg">
+            <aside class="col-span-3 bg-cyan-400 bg-opacity-85 divide-y divide-gray-100 text-gray-900 p-4 h-full rounded-lg shadow-lg">
                 @include('partials.user.sidebar', ['popularNews' => $popularNews, 'categories' => $categories])
             </aside>
         </div>
@@ -43,6 +43,7 @@
 
     <!-- Footer -->
     @include('partials.user.footer')
+
     <!-- Import Flowbite script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.5.3/flowbite.min.js"></script>
 </body>

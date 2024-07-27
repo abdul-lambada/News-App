@@ -23,12 +23,13 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-       $validatedData = $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
             'phone_number' => 'nullable|string|max:15',
             'address' => 'nullable|string|max:255',
+            'profile_photo' => 'nullable|image|max:2048',
             'role_id' => 'required|exists:roles,id',
         ]);
 
@@ -42,6 +43,7 @@ class UserController extends Controller
             'password' => bcrypt($validatedData['password']),
             'phone_number' => $validatedData['phone_number'],
             'address' => $validatedData['address'],
+            'profile_photo' => $validatedData['profile_photo'],
             'role_id' => $validatedData['role_id'],
         ]);
 
@@ -61,6 +63,7 @@ class UserController extends Controller
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
             'phone_number' => 'nullable|string|max:15',
             'address' => 'nullable|string|max:255',
+            'profile_photo' => 'nullable|image|max:2048',
             'role_id' => 'required|exists:roles,id',
         ]);
 
@@ -88,9 +91,7 @@ class UserController extends Controller
         if ($user->profile_photo) {
             Storage::disk('public')->delete($user->profile_photo);
         }
-        
         $user->delete();
-
         return redirect()->route('admin.users.index')->with('success', 'User deleted successfully.');
     }
 }

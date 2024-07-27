@@ -15,13 +15,13 @@ class HomeController extends Controller
         $news = News::with(['category', 'region'])->latest()->get();
 
         // Get categories by name
-        $featureCategory = Category::where('name', 'edukasi')->first();
+        $edukasiCategory = Category::where('name', 'edukasi')->first();
         $komunitasCategory = Category::where('name', 'komunitas')->first();
         $opiniCategory = Category::where('name', 'opini')->first();
 
         // Get news based on the categories
-        $editorChoiceMain = News::where('category_id', $featureCategory->id)->latest()->first();
-        $editorChoiceNews = News::where('category_id', $featureCategory->id)->latest()->take(5)->get();
+        $editorChoiceMain = News::where('category_id', $edukasiCategory->id)->latest()->first();
+        $editorChoiceNews = News::where('category_id', $edukasiCategory->id)->latest()->take(5)->get();
 
         $komunitasMain = News::where('category_id', $komunitasCategory->id)->latest()->first();
         $komunitasNews = News::where('category_id', $komunitasCategory->id)->latest()->take(5)->get();
@@ -30,6 +30,11 @@ class HomeController extends Controller
         $opiniNews = News::where('category_id', $opiniCategory->id)->latest()->take(5)->get();
 
         $perPage = 6;
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        $currentItems = $news->slice(($currentPage - 1) * $perPage, $perPage)->all();
+        $paginatedNews = new LengthAwarePaginator($currentItems, $news->count(), $perPage, $currentPage, [
+            'path' => LengthAwarePaginator::resolveCurrentPath()
+        ]);
 
         $popularNews = News::with('category')->orderBy('views', 'desc')->take(5)->get();
         $categories = Category::all();
@@ -49,6 +54,7 @@ class HomeController extends Controller
 
         return view('user.category', compact('category', 'paginatedNews', 'popularNews', 'categories', 'regions'));
     }
+
 
     public function region($region)
     {
@@ -72,5 +78,4 @@ class HomeController extends Controller
 
         return view('user.detail', compact('newsItem', 'popularNews', 'categories', 'regions', 'relatedNews'));
     }
-
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Breaking News</title>
-    <link rel="icon" href="/img/logo_news.png" type="image/svg+xml">
+    <link rel="icon" href="/images/logo_news.png" type="image/svg+xml">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.2/dist/cdn.min.js" defer></script>
 </head>
@@ -12,9 +12,9 @@
     <div class="w-full max-w-md bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
         <div class="p-6">
             <div class="flex justify-center mb-4">
-                <img src="/img/logo_news.png" alt="Breaking News Logo" class="h-12">
+                <img src="/images/logo_news.png" alt="News Talenthub Logo" class="h-12">
             </div>
-            <h2 class="text-center text-3xl font-extrabold text-gray-900 dark:text-white mb-6">Masuk ke akun Anda</h2>
+            <h2 class="text-center text-3xl font-extrabold text-gray-900 dark:text-white mb-6">Halaman Login</h2>
             <form method="POST" action="{{ route('login.post') }}">
                 @csrf
                 <div class="space-y-4">

@@ -106,9 +106,11 @@
         function openModal(modalId) {
             document.getElementById(modalId).classList.remove('hidden');
         }
+
         function closeModal(modalId) {
             document.getElementById(modalId).classList.add('hidden');
         }
+
         function openEditModal(id, name) {
             document.getElementById('edit-category-form').action = '/admin/categories/' + id;
             document.getElementById('edit-category-name').value = name;

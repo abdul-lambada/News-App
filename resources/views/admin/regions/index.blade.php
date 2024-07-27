@@ -106,9 +106,11 @@
         function openModal(modalId) {
             document.getElementById(modalId).classList.remove('hidden');
         }
+
         function closeModal(modalId) {
             document.getElementById(modalId).classList.add('hidden');
         }
+
         function openEditModal(id, name) {
             document.getElementById('edit-region-form').action = '/admin/regions/' + id;
             document.getElementById('edit-region-name').value = name;

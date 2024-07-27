@@ -1,12 +1,12 @@
 @extends('user.layout')
 
 @section('content')
-    <div class="w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div class="w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 bg-cyan-300">
         <h1 class="text-3xl font-bold mb-6">{{ ucfirst($category) }}</h1>
         <div id="news-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             @forelse ($paginatedNews as $newsItem)
-            <a href="{{ route('news.detail', $newsItem->id) }}" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 transition-transform transform hover:scale-105">
-                <img class="object-cover w-full h-40 rounded-t-lg" src="{{ asset('storage/' . $newsItem->image_url) }}" alt="{{ $newsItem->title }}">  
+                <a href="{{ route('news.detail', $newsItem->id) }}" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 transition-transform transform hover:scale-105">
+                    <img class="object-cover w-full h-40 rounded-t-lg" src="{{ asset('storage/' . $newsItem->image_url) }}" alt="{{ $newsItem->title }}">
                     <div class="flex flex-col justify-between p-4 leading-normal text-center">
                         <p class="text-sm text-gray-600 dark:text-gray-400 mb-1 flex items-center justify-center">
                             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1">
@@ -20,7 +20,7 @@
                         <h5 class="mb-1 text-lg font-semibold tracking-tight text-gray-900 dark:text-white">{{ $newsItem->title }}</h5>
                     </div>
                 </a>
-                @empty
+            @empty
                 <div class="col-span-1 sm:col-span-2 lg:col-span-3 text-center py-6">
                     <svg viewBox="0 0 24 24" fill="none" class="w-12 h-12 mx-auto mb-4" xmlns="http://www.w3.org/2000/svg">
                         <path d="M16 10.5C16 11.3284 15.5523 12 15 12C14.4477 12 14 11.3284 14 10.5C14 9.67157 14.4477 9 15 9C15.5523 9 16 9.67157 16 10.5Z" fill="#1C274C"></path>

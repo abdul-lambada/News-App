@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -23,12 +22,12 @@ class User extends Authenticatable
         'password',
         'phone_number',
         'address',
-        'profile+photo',
-        'role_id', // Penambahan rore_id fo fillable attributed
+        'profile_photo',
+        'role_id', // Added role_id to fillable attributes
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
+     * The attributes that should be hidden for arrays.
      *
      * @var array<int, string>
      */
@@ -38,16 +37,19 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the attributes that should be cast.
+     * The attributes that should be cast.
      *
-     * @return array<string, string>
+     * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datatime',
+        'email_verified_at' => 'datetime',
     ];
 
-    public function role(){
-        // return $this->belongToMany(Role::class);
+    /**
+     * Get the role that owns the user.
+     */
+    public function role()
+    {
         return $this->belongsTo(Role::class);
     }
 }

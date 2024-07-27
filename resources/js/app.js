@@ -1,6 +1,5 @@
 import './bootstrap';
 import 'alpinejs';
-
 import 'flowbite';
 import tinymce from 'tinymce/tinymce';
 import 'tinymce/themes/silver';
