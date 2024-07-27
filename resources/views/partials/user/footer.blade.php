@@ -1,10 +1,10 @@
-<footer class="w-full shadow m-2 mt-auto bg-cyan-500">
+<footer class="w-full shadow m-2 mt-auto">
     <div class="w-full max-w-screen-xl mx-auto p-2 md:py-4">
         <div class="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0 md:space-x-2 rtl:space-x-reverse">
             <div class="flex items-center space-x-2 rtl:space-x-reverse">
-                <a href="https://flowbite.com/" class="flex items-center space-x-2 rtl:space-x-reverse">
-                    <img src="/img/logo_news.png" class="h-8" alt="Flowbite Logo" />
-                    <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Breaking News</span>
+                <a href="{{ url('/') }}" class="flex items-center space-x-2 rtl:space-x-reverse">
+                    <img src="images/logo_news.png" class="h-8" alt="Flowbite Logo" />
+                    {{--  <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">News Talenthub</span>  --}}
                 </a>
             </div>
             <ul class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-2 md:space-x-4 rtl:space-x-reverse text-xs font-medium text-gray-500 dark:text-gray-400">

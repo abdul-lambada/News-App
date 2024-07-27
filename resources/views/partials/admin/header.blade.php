@@ -9,8 +9,8 @@
                     </svg>
                 </button>
                 <a href="{{ route('admin.dashboard') }}" class="flex ms-2 md:me-24">
-                    <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 me-3" alt="FlowBite Logo" />
-                    <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">News Talenthub</span>
+                    <img src="/images/logo_news.png" class="h-8 me-3" alt="FlowBite Logo" />
+                    {{--  <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Breaking News</span>  --}}
                 </a>
             </div>
             <div class="flex items-center">
@@ -18,22 +18,23 @@
                     <div>
                         <button @click="open = !open" type="button" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false">
                             <span class="sr-only">Open user menu</span>
-                            <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">
+                            <img class="w-8 h-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo ? Storage::url(Auth::user()->profile_photo) : 'https://via.placeholder.com/40' }}" alt="user photo">
                         </button>
                     </div>
                     <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 dark:bg-gray-700 dark:divide-gray-600" style="display: none; top: calc(100% + 0.5rem);">
                         <div class="px-4 py-3 border-b border-gray-200 dark:border-gray-600">
-                            <p class="text-sm font-semibold text-gray-900 dark:text-white">Tom Cook</p>
+                            <p class="text-sm font-semibold text-gray-900 dark:text-white">{{ Auth::user()->name }}</p>
                         </div>
                         <ul class="py-1">
-                            <li>
-                                <a href="{{ route('logout') }}" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white">
-                                    <svg class="w-5 h-5 mr-3 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1m0-10V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2h6a2 2 0 002-2v-1" />
+                            <form method="POST" action="{{ route('logout') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                                @csrf
+                                <button type="submit" class="flex items-center w-full text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                                    <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1m0-10V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1" />
                                     </svg>
-                                    Sign out
-                                </a>
-                            </li>
+                                    <span class="ml-3">Logout</span>
+                                </button>
+                            </form>
                         </ul>
                     </div>
                 </div>
